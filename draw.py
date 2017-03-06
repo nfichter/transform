@@ -1,7 +1,6 @@
 from display import *
 from matrix import *
 
-
 def draw_lines( matrix, screen, color ):
     if len(matrix) < 2:
         print 'Need at least 2 points to draw'
@@ -23,9 +22,6 @@ def add_edge( matrix, x0, y0, z0, x1, y1, z1 ):
 def add_point( matrix, x, y, z=0 ):
     matrix.append( [x, y, z, 1] )
     
-
-
-
 def draw_line( x0, y0, x1, y1, screen, color ):
 
     #swap points if going right -> left
