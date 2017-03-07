@@ -49,7 +49,7 @@ def parse_file( fname, points, transform, screen, color ):
     		ident(transform)
     	elif cmd == "scale":
     		args = lines[lineNum+1].split(" ")
-    		scale = make_scale(int(args[0]),int(args[1]),int(args[2]))
+    		scale = make_scale(float(args[0]),float(args[1]),float(args[2]))
     		matrix_mult(scale, transform)
     	elif cmd == "move":
     		args = lines[lineNum+1].split(" ")
