@@ -2,6 +2,7 @@ from display import *
 from matrix import *
 from draw import *
 import math
+import time
 
 """
 Goes through the file named filename and performs all of the actions listed in that file.
@@ -15,7 +16,7 @@ The file follows the following format:
 	 scale: create a scale matrix, 
 	    then multiply the transform matrix by the scale matrix - 
 	    takes 3 arguments (sx, sy, sz)
-	 translate: create a translation matrix, 
+	 move: create a translation matrix, 
 	    then multiply the transform matrix by the translation matrix - 
 	    takes 3 arguments (tx, ty, tz)
 	 rotate: create a rotation matrix,
@@ -50,7 +51,7 @@ def parse_file( fname, points, transform, screen, color ):
     		args = lines[lineNum+1].split(" ")
     		scale = make_scale(int(args[0]),int(args[1]),int(args[2]))
     		matrix_mult(scale, transform)
-    	elif cmd == "translate":
+    	elif cmd == "move":
     		args = lines[lineNum+1].split(" ")
     		translate = make_translate(int(args[0]),int(args[1]),int(args[2]))
     		matrix_mult(translate, transform)
@@ -68,13 +69,20 @@ def parse_file( fname, points, transform, screen, color ):
     	elif cmd == "apply":
     		add = 1
     		matrix_mult(transform, points)
+    		for i in range(0,len(points)):
+    			for j in range(0,len(points[0])):
+    				points[i][j] = int(points[i][j])
     	elif cmd == "display":
     		add = 1
+    		clear_screen(screen)
     		draw_lines( points, screen, color )
+    		time.sleep(0.1)
     		display(screen)
     	elif cmd == "save":
     		args = str(lines[lineNum+1])
+    		clear_screen(screen)
     		draw_lines( points, screen, color )
+    		time.sleep(0.1)
     		save_extension(screen,args)
     	elif cmd == "quit":
     		break

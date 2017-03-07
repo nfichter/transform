@@ -3,9 +3,9 @@ import math
 def make_translate( x, y, z ):
     ret = new_matrix()
     ident(ret)
-    ret[0][3] = x
-    ret[1][3] = y
-    ret[2][3] = z
+    ret[3][0] = x
+    ret[3][1] = y
+    ret[3][2] = z
     return ret
 
 def make_scale( x, y, z ):
@@ -19,28 +19,28 @@ def make_scale( x, y, z ):
 def make_rotX( theta ):    
     ret = new_matrix()
     ident(ret)
-    ret[1][1] = int(math.cos(theta))
-    ret[1][2] = int(-1*math.sin(theta))
-    ret[2][1] = int(math.sin(theta))
-    ret[2][2] = int(math.cos(theta))
+    ret[1][1] = math.cos(theta)
+    ret[2][1] = -1*math.sin(theta)
+    ret[1][2] = math.sin(theta)
+    ret[2][2] = math.cos(theta)
     return ret
 
 def make_rotY( theta ):
 	ret = new_matrix()
 	ident(ret)
-	ret[0][0] = int(math.cos(theta))
-	ret[0][2] = int(math.sin(theta))
-	ret[2][0] = int(math.sin(theta))
-	ret[2][2] = int(-1*math.cos(theta))
+	ret[0][0] = math.cos(theta)
+	ret[2][0] = math.sin(theta)
+	ret[0][2] = math.sin(theta)
+	ret[2][2] = -1*math.cos(theta)
 	return ret
 
 def make_rotZ( theta ):
     ret = new_matrix()
     ident(ret)
-    ret[0][0] = int(math.cos(theta))
-    ret[0][1] = int(-1*math.sin(theta))
-    ret[1][0] = int(math.sin(theta))
-    ret[1][1] = int(math.cos(theta))
+    ret[0][0] = math.cos(theta)
+    ret[1][0] = -1*math.sin(theta)
+    ret[0][1] = math.sin(theta)
+    ret[1][1] = math.cos(theta)
     return ret
 
 def print_matrix( matrix ):
