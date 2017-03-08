@@ -3,6 +3,7 @@ from matrix import *
 from draw import *
 import math
 import time
+from random import randint
 
 """
 Goes through the file named filename and performs all of the actions listed in that file.
@@ -33,9 +34,10 @@ The file follows the following format:
 
 See the file script for an example of the file format
 """
+
+#note, also added "color" which takes 3 args (r, g, b) from 0,255 or "random" for random
 def parse_file( fname, points, transform, screen, color ):
     lines = open(fname).readlines()
-    print lines
     lineNum = 0
     while lineNum < len(lines):
     	add = 2
@@ -66,6 +68,21 @@ def parse_file( fname, points, transform, screen, color ):
     		if args[0] == "z":
     			rotate = make_rotZ(rad)
     		matrix_mult(rotate, transform)
+    	elif cmd == "color":
+    		args = lines[lineNum+1].split(" ")
+    		print args[0]
+    		if args[0] == "random":
+    			color[0] = randint(0,256)
+    		else:
+	    		color[0] = int(args[0])
+	    	if args[1] == "random":
+	    		color[1] = randint(0,256)
+	    	else:
+    			color[1] = int(args[1])
+    		if args[2] == "random\n":
+	    		color[2] = randint(0,256)
+	    	else:
+	    		color[2] = int(args[2])
     	elif cmd == "apply":
     		add = 1
     		matrix_mult(transform, points)
