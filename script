@@ -73,5 +73,5 @@ rotate
 z 20
 apply
 displaynoclr
-save
+savenoclr
 pic.png

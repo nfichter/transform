@@ -36,7 +36,7 @@ See the file script for an example of the file format
 """
 
 #note, also added "color" which takes 3 args (r, g, b) from 0,255 or "random" for random
-#"displaynoclr" to display without clear_screen
+#"displaynoclr" to display without clear_screen, "savenoclr"
 def parse_file( fname, points, transform, screen, color ):
     lines = open(fname).readlines()
     lineNum = 0
@@ -104,6 +104,11 @@ def parse_file( fname, points, transform, screen, color ):
     	elif cmd == "save":
     		args = str(lines[lineNum+1])
     		clear_screen(screen)
+    		draw_lines( points, screen, color )
+    		time.sleep(0.1)
+    		save_extension(screen,args)
+    	elif cmd == "savenoclr":
+    		args = str(lines[lineNum+1])
     		draw_lines( points, screen, color )
     		time.sleep(0.1)
     		save_extension(screen,args)
