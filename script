@@ -52,6 +52,26 @@ ident
 rotate
 y 20
 apply
-display
+displaynoclr
+rotate
+x 20
+apply
+displaynoclr
+rotate
+z 20
+apply
+displaynoclr
+rotate
+y 40
+apply
+displaynoclr
+rotate
+x 40
+apply
+displaynoclr
+rotate
+z 20
+apply
+displaynoclr
 save
 pic.png
